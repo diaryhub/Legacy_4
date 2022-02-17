@@ -8,4 +8,7 @@
     <select id="list" resultType="com.study.s1.notice.NoticeDTO">
     SELECT * FROM NOTICE
     </select>
+    <select id="detail" parameterType="" resultType="com.study.s1.notice.NoticeDTO">
+    SELECT * FROM NOTICE WHERE NUM = #{num}
+    </select>
     </mapper>
