@@ -1,5 +1,6 @@
 package com.study.s1.notice;
 
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,16 +15,16 @@ public class NoticeDAO {
 	public List<NoticeDTO> list() {
 		return sqlSession.selectList(namespace+"list");
 	}
-	public void detail() {
-		
+	public NoticeDTO detail(NoticeDTO notionDTO) {
+		return sqlSession.selectOne(namespace+"detail",notionDTO);
 	}
-	public void add() {
-		
+	public int add(NoticeDTO noticeDTO) {
+		return sqlSession.insert(namespace+"add",noticeDTO);
 	}
-	public void delete() {
-		
+	public int delete(NoticeDTO noticeDTO) {
+		return sqlSession.delete(namespace+"delete", noticeDTO);
 	}
-	public void update() {
-		
+	public int update(NoticeDTO noticeDTO) {
+		return sqlSession.update(namespace+"update", noticeDTO);
 	}
 }
