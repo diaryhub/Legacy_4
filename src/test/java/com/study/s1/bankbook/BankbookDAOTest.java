@@ -23,7 +23,7 @@ public class BankbookDAOTest extends SuperTest{
 		assertNotEquals(0, ar.size());
 	}
 	
-	@Test
+	//@Test
 	public void addTest() throws Exception{
 		BankbookDTO bankbookDTO = new BankbookDTO();
 		bankbookDTO.setbookName("t1");
@@ -40,11 +40,22 @@ public class BankbookDAOTest extends SuperTest{
 		bankbookDTO = bankbookDAO.detail(8L);
 		assertNotNull(bankbookDTO);
 	}
-	@Test
+	//@Test
 	public void deleteTest() throws Exception{
 		BankbookDTO bankbookDTO = new BankbookDTO();
 		bankbookDTO.setbookNumber(8L);
 		int result = bankbookDAO.delete(bankbookDTO);
+		assertEquals(1, result);
+	}
+	@Test
+	public void updateTest() throws Exception{
+		BankbookDTO bankbookDTO = new BankbookDTO();
+		bankbookDTO.setbookNumber(21L);
+		bankbookDTO.setbookName("t2");
+		bankbookDTO.setbookContents("c2");
+		bankbookDTO.setbookRate(5.21);
+		bankbookDTO.setbookSale(0);
+		int result = bankbookDAO.update(bankbookDTO);
 		assertEquals(1, result);
 	}
 }

@@ -22,12 +22,11 @@ public class BankbookDAO {
 	public BankbookDTO detail(long num) throws Exception{
 		return sqlSession.selectOne(namespace+"detail",num);
 	}
-	public void update() {
-		
+	public int update(BankbookDTO bankbookDTO) throws Exception{
+		return sqlSession.update(namespace+"update", bankbookDTO);
 	}
 	public int delete(BankbookDTO bankbookDTO) throws Exception{
 		return sqlSession.delete(namespace+"delete", bankbookDTO);
 	}
-	
 	
 }
