@@ -16,7 +16,7 @@ public class NoticeDAOTest extends SuperTest{
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	@Test
+	//@Test
 	public void listTest() {
 		List<NoticeDTO> ar = noticeDAO.list();
 		assertNotNull(ar);
@@ -28,17 +28,19 @@ public class NoticeDAOTest extends SuperTest{
 		noticeDTO = noticeDAO.detail(noticeDTO);
 		assertNotNull(noticeDTO);
 	}
-	//@Test
-	public void addTest() {
-		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setTitle("title");
-		noticeDTO.setContents("contents");
-		noticeDTO.setWriter("writer");
-		noticeDTO.setHit(1);
-		int result = noticeDAO.add(noticeDTO);
-		assertNotEquals(0, result);
-	}
 	@Test
+	public void addTest() {
+		for(int i=0;i<10;i++) {
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setTitle("title"+i);
+		noticeDTO.setContents("contents"+i);
+		noticeDTO.setWriter("writer"+i);
+		noticeDTO.setHit(0);
+		int result = noticeDAO.add(noticeDTO);
+		}
+//		assertNotEquals(0, result);
+	}
+	//@Test
 	public void updateTest() {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(21);

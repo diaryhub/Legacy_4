@@ -8,7 +8,7 @@ public class NoticeDTO {
 	private String title;
 	private String contents;
 	private String writer;
-	private Date date;
+	private Date regDate;
 	private Integer hit;
 	
 	public Integer getNum() {
@@ -35,11 +35,11 @@ public class NoticeDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getDate() {
-		return date;
+	public Date getregDate() {
+		return regDate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setregDate(Date regDate) {
+		this.regDate = regDate;
 	}
 	public Integer getHit() {
 		return hit;
