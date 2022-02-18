@@ -12,7 +12,7 @@
     SELECT * FROM NOTICE WHERE NUM = #{num}
     </select>
     <insert id="add" parameterType="com.study.s1.notice.NoticeDTO">
-    INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},(SELECT TO_CHAR(SYSDATE, 'YYYYMMDD') FROM DUAL),#{hit})
+    INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,#{hit})
     </insert>
     <update id="update" parameterType="com.study.s1.notice.NoticeDTO">
     UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents}, WRITER=#{writer}, HIT=#{hit} WHERE NUM=#{num}

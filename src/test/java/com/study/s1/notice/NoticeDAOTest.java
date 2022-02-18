@@ -24,7 +24,7 @@ public class NoticeDAOTest extends SuperTest{
 	//@Test
 	public void detailTest() {
 		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNum(1);
+		noticeDTO.setNum(21);
 		noticeDTO = noticeDAO.detail(noticeDTO);
 		assertNotNull(noticeDTO);
 	}
@@ -38,10 +38,10 @@ public class NoticeDAOTest extends SuperTest{
 		int result = noticeDAO.add(noticeDTO);
 		assertNotEquals(0, result);
 	}
-	//@Test
+	@Test
 	public void updateTest() {
 		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNum(1);
+		noticeDTO.setNum(21);
 		noticeDTO.setTitle("title2");
 		noticeDTO.setContents("contents2");
 		noticeDTO.setWriter("writer2");
@@ -50,7 +50,7 @@ public class NoticeDAOTest extends SuperTest{
 		assertNotEquals(0, result);
 		
 	}
-	@Test
+	//@Test
 	public void deleteTest() {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(1);
