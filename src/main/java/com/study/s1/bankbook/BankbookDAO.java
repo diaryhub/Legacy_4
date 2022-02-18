@@ -1,4 +1,4 @@
-package com.study.s1.bankbook;
+	package com.study.s1.bankbook;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ public class BankbookDAO {
 	public List<BankbookDTO> list() throws Exception{
 			return sqlSession.selectList(namespace+"list");
 		}
-	public BankbookDTO detail(long num) throws Exception{
-		return sqlSession.selectOne(namespace+"detail",num);
+	public BankbookDTO detail(BankbookDTO bankbookDTO) throws Exception{
+		return sqlSession.selectOne(namespace+"detail",bankbookDTO);
 	}
 	public int update(BankbookDTO bankbookDTO) throws Exception{
 		return sqlSession.update(namespace+"update", bankbookDTO);
