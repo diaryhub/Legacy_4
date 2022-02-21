@@ -6,6 +6,5 @@
   <configuration>
   <typeAliases>
   <typeAlias type="com.study.s1.notice.NoticeDTO" alias="NoticeDTO"/>
-  <typeAlias type="java.lang.Long" alias="Long"/>
   </typeAliases>
   </configuration>
