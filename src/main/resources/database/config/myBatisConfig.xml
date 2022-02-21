@@ -5,7 +5,11 @@
   
   <configuration>
   <typeAliases>
+
   <typeAlias type="com.study.s1.bankbook.BankbookDTO" alias="BankbookDTO"/>
   <typeAlias type="java.lang.Long" alias="Long"/>
+
+  <typeAlias type="com.study.s1.notice.NoticeDTO" alias="NoticeDTO"/>
+
   </typeAliases>
   </configuration>
