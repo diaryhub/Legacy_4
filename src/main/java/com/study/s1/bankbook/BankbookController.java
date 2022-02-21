@@ -38,10 +38,23 @@ public class BankbookController {
 			System.out.println("insert sucsess");
 			return "redirect:./list";
 		}
+		System.out.println("insert fail");
 		return "redirect:./add";
 	}
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public void add(ModelAndView modelAndView) {
 	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(BankbookDTO bankbookDTO) throws Exception {
+		int result = bankbookService.delete(bankbookDTO);
+		if(result>0) {
+			System.out.println("delete sucsess");
+		return "redirect:./list";
+		}
+		System.out.println("delete fail");
+		return "redirect:./list";
+	}
+	
 	
 }

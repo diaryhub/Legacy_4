@@ -14,5 +14,6 @@
 <h1>이자율:${dto.bookRate}</h1>
 <h1>판매여부:${dto.bookSale}</h1>
 <h2><a href="./list">뒤로</a></h2>
+<h2><a href="./delete?bookNumber=${dto.bookNumber}">삭제</a></h2>
 </body>
 </html>

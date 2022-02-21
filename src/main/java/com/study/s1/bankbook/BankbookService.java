@@ -29,5 +29,9 @@ public class BankbookService {
 		return bankbookDAO.add(bankbookDTO);
 	}
 	
+	public int delete(BankbookDTO bankbookDTO) throws Exception{
+		return bankbookDAO.delete(bankbookDTO);
+	}
+	
 	
 }
