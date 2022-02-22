@@ -9,6 +9,9 @@
     	INSERT INTO MEMBER VALUES (#{id},#{pw},#{name},#{email},#{phone})
     	</insert>
     	<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
-    	SELECT ID, NAME FROM MEMBER WHERE ID=#{id} and pw=#{pw}
+    	SELECT * FROM MEMBER WHERE ID=#{id} and pw=#{pw}
+    	</select>
+    	<select id="mypage" parameterType="MemberDTO" resultType="MemberDTO">
+    	SELECT ID,NAME,EMAIL,PHONE FROM MEMBER WHERE ID=#{id} and PW=#{pw}
     	</select>
     </mapper>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/join.css">
+<link rel="stylesheet" href="../resources/css/join.css">
 </head>
 <body>
 	<h1>Join Page</h1>

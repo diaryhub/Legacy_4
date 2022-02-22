@@ -19,4 +19,8 @@ public class MemberDAO {
 		return sqlSession.selectOne(namespace+"login",memberDTO);
 	}
 	
+	public MemberDTO mypage(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(namespace+"mypage",memberDTO);
+	}	
+	
 }

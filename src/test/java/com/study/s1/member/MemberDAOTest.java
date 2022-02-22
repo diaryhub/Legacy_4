@@ -23,7 +23,7 @@ public class MemberDAOTest extends SuperTest{
 		memberDTO.setPhone("010-0000-0000");
 		
 	}
-	@Test
+	//@Test
 	public void loginTest() throws Exception {
 		
 		MemberDTO memberDTO = new MemberDTO();
@@ -33,6 +33,19 @@ public class MemberDAOTest extends SuperTest{
 		
 		
 		memberDTO = memberDAO.login(memberDTO);
+		
+		assertNotNull(memberDTO);
+	}
+	
+	//@Test
+	public void mypageTest() throws Exception {
+		MemberDTO memberDTO = new MemberDTO();
+		
+		memberDTO.setId("id1");
+		memberDTO.setPw("pw1");
+		
+		
+		memberDTO = memberDAO.mypage(memberDTO);
 		
 		assertNotNull(memberDTO);
 	}
