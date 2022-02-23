@@ -21,6 +21,9 @@ public class MemberDAO {
 	
 	public MemberDTO mypage(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(namespace+"mypage",memberDTO);
-	}	
+	}
+	public int update(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(namespace+"update",memberDTO);
+	}
 	
 }

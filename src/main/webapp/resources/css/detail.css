@@ -1,0 +1,17 @@
+@charset "EUC-KR";
+
+/*detail 2°³*/
+
+.notice_detail{
+	background-color: pink;
+	width: 300px;
+	height: 200px;
+	margin:  auto;
+	text-align: center;
+	justify-content: center;
+	line-height: 25px;
+}
+
+.bankbook_detail{
+	
+}

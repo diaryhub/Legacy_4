@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="../resources/detail.css" rel="stylesheet">
 </head>
-<body>
+<body class="bankbook_detail">
 <h1>Detail Page</h1>
 <h1>일련번호:${dto.bookNumber}</h1>
 <h1>통장명:${dto.bookName}</h1>

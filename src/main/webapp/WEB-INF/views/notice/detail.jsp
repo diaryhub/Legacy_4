@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="../resources/detail.css" rel="stylesheet">
 </head>
 <body>
 	<h1>Detail Page</h1>
@@ -17,6 +18,9 @@
 			<td><h3>${dto.hit}</h3></td>
 		</tr>
 	</table>
-	${dto.contents}
+	<div>
+	<textarea rows="10" cols="100" readonly> ${dto.contents}</textarea>
+	</div>
+	<a href="./update?num=${dto.num}">수정</a>
 </body>
 </html>

@@ -22,4 +22,9 @@ public class NoticeService {
 	public int add(NoticeDTO noticeDTO)throws Exception{
 		return noticeDAO.add(noticeDTO);
 	}
+	
+	public int update(NoticeDTO noticeDTO)throws Exception{
+		return noticeDAO.update(noticeDTO);
+	}
+	
 }

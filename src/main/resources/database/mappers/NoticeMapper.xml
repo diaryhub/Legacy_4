@@ -15,7 +15,7 @@
     INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0)
     </insert>
     <update id="update" parameterType="com.study.s1.notice.NoticeDTO">
-    UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents}, WRITER=#{writer}, HIT=#{hit} WHERE NUM=#{num}
+    UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
     </update>
     <delete id="delete" parameterType="com.study.s1.notice.NoticeDTO">
     DELETE NOTICE WHERE NUM=#{num}

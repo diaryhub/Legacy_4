@@ -9,11 +9,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header_css.jsp"></c:import>
+<link href="../resources/css/table.css" rel="stylesheet">
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<h1>List Page</h1>
-	<table>
+	<table class="notice_table">
 		<tr>
 			<td><h3>글번호</h3></td>
 			<td><h3>글제목</h3></td>

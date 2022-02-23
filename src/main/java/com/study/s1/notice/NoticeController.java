@@ -42,5 +42,20 @@ public class NoticeController {
 	public String add(ModelAndView mv) throws Exception {
 		return "notice/add";
 	}
+	@RequestMapping(value = "update", method=RequestMethod.POST)
+	public String update(NoticeDTO noticeDTO) throws Exception {
+		int result = noticeService.update(noticeDTO);
+		if(result>0) {
+			System.out.println("update sucsess");
+			return "redirect:./list";
+		}
+		return "redirect:./update";
+	}
+	@RequestMapping(value = "update", method=RequestMethod.GET)
+	public String update(NoticeDTO noticeDTO, Model model) throws Exception {
+		noticeDTO=noticeService.detail(noticeDTO);
+		model.addAttribute("dto",noticeDTO);
+		return "notice/update";
+	}
 	
 }

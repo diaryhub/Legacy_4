@@ -1,0 +1,32 @@
+@charset "EUC-KR";
+/* table.css */
+
+/* Notice, BankBook table에 적용할 2개*/
+
+.bankbook_table{
+	margin: auto;
+	background-color: cyan;
+	width: 300px;
+	text-align: center;
+	justify-content: center;
+	border: 2px black solid;
+	border-collapse: collapse;
+}
+
+thead{
+	background-color: white;
+}
+
+td{
+	border: 1px black solid;
+}
+
+.notice_table{
+	margin: auto;
+	background-color: gray;
+	width: 600px;
+	text-align: center;
+	justify-content: center;
+	border: 2px black solid;
+	border-collapse: collapse;
+}

@@ -62,4 +62,19 @@ public class MemberController {
 		return "redirect:./login";
 	}
 	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(MemberDTO memberDTO) throws Exception {
+		int result = service.update(memberDTO);
+		if (result != 0)
+			return "redirect:../";
+		return "redirect:./update";
+	}
+
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public String update(MemberDTO memberDTO, Model model) throws Exception {
+		memberDTO = service.mypage(memberDTO);
+		model.addAttribute("dto", memberDTO);
+		return "member/update";
+	}
+	
 }
