@@ -17,6 +17,12 @@ public class BankbookController {
 	
 	@Autowired
 	private BankbookService bankbookService;
+	
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public String update()throws Exception{
+		return "bankbook/update";
+	}
+	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView list(ModelAndView mv) throws Exception {
 		List<BankbookDTO> ar = bankbookService.list();
