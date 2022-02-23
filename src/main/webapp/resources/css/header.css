@@ -51,3 +51,7 @@
 .header_sub ul li a{
     color: white;
 }
+
+.icon {
+	vertical-align: baseline;
+}

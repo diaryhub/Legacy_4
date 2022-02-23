@@ -7,11 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="./template/header_css.jsp"></c:import>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 </head>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
-	<h1>hello</h1><span class="material-icons">login</span>
+	<h1>hello</h1><span class="material-icons-outlined">account_circle</span>
 	<h1>${member.name}</h1>
 	<div>
 		<c:if test="${not empty member}">
