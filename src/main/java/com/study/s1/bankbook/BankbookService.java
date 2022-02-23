@@ -32,6 +32,11 @@ public class BankbookService {
 	public int delete(BankbookDTO bankbookDTO) throws Exception{
 		return bankbookDAO.delete(bankbookDTO);
 	}
+	public int update(BankbookDTO bankbookDTO) throws Exception{
+		return bankbookDAO.update(bankbookDTO);
+	}
+	
+	
 	
 	
 }
