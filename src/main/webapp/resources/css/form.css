@@ -13,10 +13,10 @@
 }
 
 .update_form{
+	margin: auto;
 	background-color: pink;
 	width: 300px;
 	height: 500px;
-	margin:  auto;
 	text-align: center;
 	justify-content: space-around;
 	line-height: 25px;

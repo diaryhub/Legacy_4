@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/detail.css" rel="stylesheet">
+<link href="../resources/css/detail.css" rel="stylesheet">
+<c:import url="../template/header_css.jsp"></c:import>
 </head>
 <body class="bankbook_detail">
+	<c:import url="../template/header.jsp"></c:import>
 <h1>Detail Page</h1>
 <h1>일련번호:${dto.bookNumber}</h1>
 <h1>통장명:${dto.bookName}</h1>
