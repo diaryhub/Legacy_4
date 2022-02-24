@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.study.s1.util.Pager;
+
 @Repository
 public class BankbookDAO {
 	
@@ -16,8 +18,8 @@ public class BankbookDAO {
 	public int add(BankbookDTO bankbookDTO) {
 		return sqlSession.insert(namespace+"add", bankbookDTO);
 	}
-	public List<BankbookDTO> list() throws Exception{
-			return sqlSession.selectList(namespace+"list");
+	public List<BankbookDTO> list(Pager pager) throws Exception{
+			return sqlSession.selectList(namespace+"list",pager);
 		}
 	public BankbookDTO detail(BankbookDTO bankbookDTO) throws Exception{
 		return sqlSession.selectOne(namespace+"detail",bankbookDTO);
@@ -27,6 +29,9 @@ public class BankbookDAO {
 	}
 	public int delete(BankbookDTO bankbookDTO) throws Exception{
 		return sqlSession.delete(namespace+"delete", bankbookDTO);
+	}
+	public Long total() {
+		return sqlSession.selectOne(namespace+"total");
 	}
 	
 }

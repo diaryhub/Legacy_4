@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.study.s1.SuperTest;
+import com.study.s1.util.Pager;
 
 public class BankbookDAOTest extends SuperTest{
 	
@@ -17,21 +18,31 @@ public class BankbookDAOTest extends SuperTest{
 	public void check() {
 		assertNotNull(bankbookDAO);
 	}
-	//@Test
+	@Test
 	public void listTest() throws Exception{
-		List<BankbookDTO> ar = bankbookDAO.list();
-		assertNotEquals(0, ar.size());
+		Pager pager = new Pager();
+		pager.makeRow();
+		List<BankbookDTO> ar = bankbookDAO.list(pager);
+		System.out.println(ar.get(0).getbookNumber());
+		System.out.println(ar.get(5).getbookNumber());
+		assertEquals(5,ar.size());
 	}
 	
-	@Test
+	//@Test
 	public void addTest() throws Exception{
-		for(int i=0;i<10;i++) {
+		for(int i=0;i<200;i++) {
 		BankbookDTO bankbookDTO = new BankbookDTO();
 		bankbookDTO.setbookName("t"+i);
 		bankbookDTO.setbookContents("c"+i);
-		bankbookDTO.setbookRate(3.12+0.1*(double)i);
+		double rate=Math.random();//0.0~1.0
+		rate=rate*1000;
+		int r = (int)rate;
+		rate = r/100.0;
+		bankbookDTO.setbookRate(rate);
 		bankbookDTO.setbookSale(1);
 		int result = bankbookDAO.add(bankbookDTO);
+		if(i%10==0)
+		Thread.sleep(1000);//1초동안 휴식
 		}
 //		assertEquals(1, result);
 		System.out.println("insert finish");
