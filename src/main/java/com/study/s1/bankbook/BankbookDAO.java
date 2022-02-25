@@ -30,8 +30,8 @@ public class BankbookDAO {
 	public int delete(BankbookDTO bankbookDTO) throws Exception{
 		return sqlSession.delete(namespace+"delete", bankbookDTO);
 	}
-	public Long total() {
-		return sqlSession.selectOne(namespace+"total");
+	public Long total(Pager pager) {
+		return sqlSession.selectOne(namespace+"total",pager);
 	}
 	
 }

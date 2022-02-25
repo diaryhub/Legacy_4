@@ -19,8 +19,31 @@ public class Pager {
 	
 	private boolean pre;
 	private boolean next;
-
 	
+	//---------검색용 변수-------
+	private String search;
+	private String kind;
+	
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		if(search==null) {
+			search="";
+		}
+//		search="%"+search+"%";
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
 	public Long getStartNum() {
 		return startNum;
 	}
@@ -40,6 +63,7 @@ public class Pager {
 	public void makeRow() {
 		this.startRow = (this.getPage()-1)*this.getPerPage()+1;
 		this.lastRow = this.getPage()*this.getPerPage();
+		
 	}
 	
 	public void makenNum(Long totalCount) {

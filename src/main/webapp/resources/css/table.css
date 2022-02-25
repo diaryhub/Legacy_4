@@ -2,31 +2,51 @@
 /* table.css */
 
 /* Notice, BankBook table에 적용할 2개*/
-
-.bankbook_table{
+.bankbook_table {
 	margin: auto;
-	background-color: bisque;
-	width: 500px;
+	width: 100%;
 	text-align: center;
 	justify-content: center;
 	border: 2px black solid;
 	border-collapse: collapse;
 }
 
-thead{
-	background-color: white;
+.table_container>.bankbook_table {
+	margin-top: 50px;
 }
 
-td{
-	border: 1px black solid;
+.title {
+	margin-top: 50px;
 }
 
-.notice_table{
+.bankbook_table thead:first-child {
+	background-color: #2e277f;
+	color: white;
+	height: 30px;
+}
+
+.table_bookname {
+	width: 50%;
+}
+
+.table_container {
+	width: 70%;
+	margin: 0px auto;
+}
+
+td {
+	border: 1px #2e277f solid;
+}
+
+.notice_table {
 	margin: auto;
-	background-color: gray;
 	width: 600px;
 	text-align: center;
 	justify-content: center;
 	border: 2px black solid;
 	border-collapse: collapse;
+}
+
+.notice_table thead {
+	background-color: gray;
 }

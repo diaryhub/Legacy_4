@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.study.s1.util.Pager;
 @Repository
 public class NoticeDAO {
 	@Autowired
@@ -26,5 +28,8 @@ public class NoticeDAO {
 	}
 	public int update(NoticeDTO noticeDTO) {
 		return sqlSession.update(namespace+"update", noticeDTO);
+	}
+	public Long total() {
+		return sqlSession.selectOne(namespace+"total");
 	}
 }

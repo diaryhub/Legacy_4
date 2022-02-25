@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.study.s1.util.Pager;
+
 @Service
 public class NoticeService {
 	
@@ -12,6 +14,7 @@ public class NoticeService {
 	private NoticeDAO noticeDAO;
 	
 	public List<NoticeDTO> list() throws Exception{
+		
 		List<NoticeDTO> ar = noticeDAO.list();
 		return ar;
 	}

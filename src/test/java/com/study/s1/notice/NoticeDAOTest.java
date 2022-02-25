@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.study.s1.SuperTest;
+import com.study.s1.util.Pager;
 
 public class NoticeDAOTest extends SuperTest{
 	@Autowired
@@ -18,6 +19,8 @@ public class NoticeDAOTest extends SuperTest{
 	
 	//@Test
 	public void listTest() {
+		Pager pager = new Pager();
+		pager.setPage(5L);
 		List<NoticeDTO> ar = noticeDAO.list();
 		assertNotNull(ar);
 	}
