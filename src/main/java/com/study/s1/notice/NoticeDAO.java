@@ -14,8 +14,8 @@ public class NoticeDAO {
 	private SqlSession sqlSession;
 	private String namespace="com.study.s1.notice.NoticeDAO.";
 	
-	public List<NoticeDTO> list() {
-		return sqlSession.selectList(namespace+"list");
+	public List<NoticeDTO> list(Pager pager) {
+		return sqlSession.selectList(namespace+"list",pager);
 	}
 	public NoticeDTO detail(NoticeDTO notionDTO) {
 		return sqlSession.selectOne(namespace+"detail",notionDTO);
@@ -29,7 +29,7 @@ public class NoticeDAO {
 	public int update(NoticeDTO noticeDTO) {
 		return sqlSession.update(namespace+"update", noticeDTO);
 	}
-	public Long total() {
-		return sqlSession.selectOne(namespace+"total");
+	public Long total(Pager pager) {
+		return sqlSession.selectOne(namespace+"total",pager);
 	}
 }

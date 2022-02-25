@@ -7,8 +7,31 @@
     <mapper namespace="com.study.s1.notice.NoticeDAO">
 
     <select id="list" resultType="com.study.s1.notice.NoticeDTO">
-    SELECT * FROM NOTICE
+     SELECT * FROM
+	(SELECT ROWNUM R, N.* FROM
+	(SELECT * FROM NOTICE WHERE NUM>0 AND 
+	<choose>
+	<when test="kind=='col1'">TITLE</when> 
+	<when test="kind=='col2'">CONTENTS</when> 
+	<when test="kind=='col3'">WRITER</when> 
+	<otherwise>TITLE</otherwise>
+	</choose>
+	LIKE '%'||#{search}||'%' ORDER BY NUM DESC) N)
+	 WHERE R BETWEEN #{startRow} AND #{lastRow}
     </select>
+    
+    <select id="total" resultType="Long" parameterType="Pager">
+    	SELECT COUNT(NUM) FROM NOTICE
+    	WHERE NUM>0 AND 
+	<choose>
+	<when test="kind=='col1'">TITLE</when> 
+	<when test="kind=='col2'">CONTENTS</when> 
+	<when test="kind=='col3'">WRITER</when> 
+	<otherwise>TITLE</otherwise>
+	</choose>
+	LIKE '%'||#{search}||'%'
+    </select>
+    
     <select id="detail" parameterType="com.study.s1.notice.NoticeDTO" resultType="com.study.s1.notice.NoticeDTO">
     SELECT * FROM NOTICE WHERE NUM = #{num}
     </select>

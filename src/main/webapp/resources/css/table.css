@@ -10,8 +10,19 @@
 	border: 2px black solid;
 	border-collapse: collapse;
 }
+.notice_table {
+	margin: auto;
+	width: 100%;
+	text-align: center;
+	justify-content: center;
+	border: 2px black solid;
+	border-collapse: collapse;
+}
 
 .table_container>.bankbook_table {
+	margin-top: 50px;
+}
+.table_container>.notice_table {
 	margin-top: 50px;
 }
 
@@ -24,8 +35,17 @@
 	color: white;
 	height: 30px;
 }
+.notice_table thead:first-child {
+	background-color: #927de1;
+	color: white;
+	height: 30px;
+}
 
 .table_bookname {
+	width: 50%;
+}
+
+.table_title {
 	width: 50%;
 }
 
@@ -38,15 +58,4 @@ td {
 	border: 1px #2e277f solid;
 }
 
-.notice_table {
-	margin: auto;
-	width: 600px;
-	text-align: center;
-	justify-content: center;
-	border: 2px black solid;
-	border-collapse: collapse;
-}
 
-.notice_table thead {
-	background-color: gray;
-}

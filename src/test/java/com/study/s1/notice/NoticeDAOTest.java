@@ -21,7 +21,7 @@ public class NoticeDAOTest extends SuperTest{
 	public void listTest() {
 		Pager pager = new Pager();
 		pager.setPage(5L);
-		List<NoticeDTO> ar = noticeDAO.list();
+		List<NoticeDTO> ar = noticeDAO.list(pager);
 		assertNotNull(ar);
 	}
 	//@Test
@@ -32,14 +32,17 @@ public class NoticeDAOTest extends SuperTest{
 		assertNotNull(noticeDTO);
 	}
 	@Test
-	public void addTest() {
-		for(int i=0;i<10;i++) {
+	public void addTest() throws Exception {
+		for(int i=0;i<300;i++) {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setTitle("title"+i);
 		noticeDTO.setContents("contents"+i);
-		noticeDTO.setWriter("writer"+i);
+		noticeDTO.setWriter("writer");
 		noticeDTO.setHit(0);
 		int result = noticeDAO.add(noticeDTO);
+		if(i%10==0) {
+		Thread.sleep(1000);
+		}
 		}
 //		assertNotEquals(0, result);
 	}

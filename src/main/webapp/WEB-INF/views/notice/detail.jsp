@@ -9,13 +9,12 @@
 <title>Insert title here</title>
 <c:import url="../template/header_css.jsp"></c:import>
 <link href="../resources/css/detail.css" rel="stylesheet">
-<link href="../resources/css/table.css" rel="stylesheet">
 </head>
 <body class="notice_detail">
 	<c:import url="../template/header.jsp"></c:import>
 	
 	<div>
-	<table class="notice_table">
+	<table class=>
 		<tr>
 			<td><h3>${dto.num}</h3></td>
 			<td><h3>${dto.title}</h3></td>

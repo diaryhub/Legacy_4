@@ -13,9 +13,11 @@ public class NoticeService {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	public List<NoticeDTO> list() throws Exception{
-		
-		List<NoticeDTO> ar = noticeDAO.list();
+	public List<NoticeDTO> list(Pager pager) throws Exception{
+		pager.makeRow();
+		Long totalCount= noticeDAO.total(pager);
+		pager.makenNum(totalCount);
+		List<NoticeDTO> ar = noticeDAO.list(pager);
 		return ar;
 	}
 	

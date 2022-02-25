@@ -5,7 +5,7 @@
 		<nav class="header_wrap">
 			<ul>
 				<li><a href="/s1/">HOME</a></li>
-				<li><a href="/s1/notice/list?name=diary&age=26">공지사항</a></li>
+				<li><a href="/s1/notice/list">공지사항</a></li>
 				<li><a href="/s1/qna/list">QnA</a></li>
 				<li> <a href="/s1/bankbook/list">통장관리</a></li>
 			</ul>
