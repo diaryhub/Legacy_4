@@ -19,10 +19,10 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@RequestMapping(value = "list", method=RequestMethod.GET)
-	public ModelAndView list(ModelAndView mv) throws Exception {
-		List<NoticeDTO> ar = noticeService.list();
-//		mv.addObject("list",ar);
-//		mv.addObject("pager", pager);
+	public ModelAndView list(ModelAndView mv,Pager pager) throws Exception {
+		List<NoticeDTO> ar = noticeService.list(pager);
+		mv.addObject("list",ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("notice/list");
 		return mv;
 	}
