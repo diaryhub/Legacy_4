@@ -9,28 +9,36 @@
 </head>
 <body>
 	<h1>Join Page</h1>
-	<form action="" class="frm" method="post">
+	<form action="" class="frm" method="post" id="frm">
 		<fieldset>
 			<legend>id</legend>
-			<input type="text" name="id">
+			<input type="text" name="id" id="id">
+			<div id="idResult"></div>
 		</fieldset>
 		<fieldset>
 			<legend>password</legend>
-			<input type="password" name="pw">
+			<input type="password" name="pw" id="pw" placeholder="8글자 이상 12글자 이하로 작성">
+			<div id="pwResult"></div>
+		</fieldset>
+		<fieldset>
+			<legend>password 확인</legend>
+			<input type="password" name="pw2" id="pw2" placeholder="8글자 이상 12글자 이하로 작성">
+			<div id="pw2Result"></div>
 		</fieldset>
 		<fieldset>
 			<legend>name</legend>
-			<input type="text" name="name">
+			<input type="text" name="name" id="name">
 		</fieldset>
 		<fieldset>
 			<legend>email</legend>
-			<input type="text" name="email">
+			<input type="text" name="email" id="email">
 		</fieldset>
 		<fieldset>
 			<legend>phone</legend>
-			<input type="number" name="phone">
+			<input type="text" name="phone" id="phone">
 		</fieldset>
-		<button type="submit">회원가입</button>
+		<button id="btn" type="button">회원가입</button>
 	</form>
+	<script src="../resources/js/join2.js"></script>
 </body>
 </html>
