@@ -1,8 +1,8 @@
-package com.study.s1.notice;
+package com.study.s1.board;
 
 import java.sql.Date;
 
-public class NoticeDTO {
+public class BoardDTO {
 	
 	private Integer num;
 	private String title;
@@ -10,7 +10,6 @@ public class NoticeDTO {
 	private String writer;
 	private Date regDate;
 	private Integer hit;
-	
 	public Integer getNum() {
 		return num;
 	}
@@ -35,10 +34,10 @@ public class NoticeDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getregDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
-	public void setregDate(Date regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 	public Integer getHit() {
@@ -47,8 +46,5 @@ public class NoticeDTO {
 	public void setHit(Integer hit) {
 		this.hit = hit;
 	}
-	
-	
-	
 	
 }

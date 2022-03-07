@@ -27,6 +27,7 @@
 	<textarea rows="20" cols="80" readonly> ${dto.contents}</textarea>
 	</div>
 	<a href="./update?num=${dto.num}">수정</a>
+	<a href="./delete?num=${dto.num}">삭제</a>
 	</div>
 </body>
 </html>

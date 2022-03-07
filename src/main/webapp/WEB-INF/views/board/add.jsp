@@ -8,7 +8,7 @@
 <link href="../resources/css/form.css" rel="stylesheet">
 </head>
 <body>
-	<h1>Add Page</h1>
+	<h1>${board}Add Page</h1>
 	<form class="add_form" action="./add" method="post">
 	<h3>글제목:</h3> <input type="text" name="title">
 	<h3>글내용:</h3> <textarea rows="" cols="" name="contents"></textarea>

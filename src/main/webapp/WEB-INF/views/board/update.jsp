@@ -12,6 +12,7 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
+	<h1>${board} Update Page</h1>
 <form class="update_form" action="./update" method="post">
 <input type="hidden" name="num" value="${dto.num}" readonly>
 <h3>글제목:</h3><input type="text" name="title" value="${dto.title}">

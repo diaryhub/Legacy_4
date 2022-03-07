@@ -14,7 +14,7 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="table_container">
-		<h1 class="title">List Page</h1>
+		<h1 class="title">${board} List Page</h1>
 		<div>
 			<form action="./list" method="get">
 				<fieldset>
