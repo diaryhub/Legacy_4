@@ -28,6 +28,7 @@
 	</div>
 	<a href="./update?num=${dto.num}">수정</a>
 	<a href="./delete?num=${dto.num}">삭제</a>
+		<a href="./reply?num=${dto.num}">답글</a>
 	</div>
 </body>
 </html>

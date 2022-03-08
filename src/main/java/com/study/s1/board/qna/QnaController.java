@@ -26,6 +26,22 @@ public class QnaController {
 		return "qna";
 	}
 	
+	@RequestMapping(value = "reply", method = RequestMethod.GET)
+	public ModelAndView reply(QnaDTO qnaDTO,ModelAndView mv) throws Exception {	
+		mv.addObject("dto", qnaDTO);
+		mv.setViewName("board/reply");
+		return mv;
+	}
+	
+	@RequestMapping(value = "reply", method = RequestMethod.POST)
+	public ModelAndView reply(QnaDTO qnaDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.reply(qnaDTO);
+		mv.setViewName("redirect:./list");
+		return mv;
+	}
+	
+	
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public String detail(QnaDTO qnaDTO, Model model) throws Exception{
 		BoardDTO boardDTO = qnaService.detail(qnaDTO);
@@ -80,3 +96,18 @@ public class QnaController {
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

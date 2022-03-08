@@ -52,6 +52,12 @@ public class NoticeDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE+"total", pager);
 	}
+
+	@Override
+	public int reply(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 

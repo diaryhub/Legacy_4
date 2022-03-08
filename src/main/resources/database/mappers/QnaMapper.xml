@@ -16,8 +16,9 @@
 	<when test="kind=='col3'">WRITER</when> 
 	<otherwise>TITLE</otherwise>
 	</choose>
-	LIKE '%'||#{search}||'%' ORDER BY NUM DESC) N)
-	 WHERE R BETWEEN #{startRow} AND #{lastRow}
+	LIKE '%'||#{search}||'%' ORDER BY REF DESC, STEP ASC) N)
+	 WHERE R BETWEEN #{startRow} AND #{lastRow} 
+	
     </select>
     
     <select id="total" resultType="Long" parameterType="Pager">
@@ -44,4 +45,17 @@
     <delete id="delete" parameterType="QnaDTO">
     DELETE QNA WHERE NUM=#{num}
     </delete>
+    <insert id="reply" parameterType="QnaDTO">
+    INSERT INTO QNA VALUES(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0,#{ref},#{step},#{depth})	
+    </insert>
+    <update id="stepUpdate" parameterType="QnaDTO">
+    	UPDATE QNA SET STEP = STEP+1 WHERE REF = #{ref} AND STEP > #{step}
+    </update>
     </mapper>
+    
+    
+    
+    
+    
+    
+    

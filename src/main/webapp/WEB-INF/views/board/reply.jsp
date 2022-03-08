@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -11,8 +11,9 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<h1>${board}Add Page</h1>
-	<form class="add_form" action="./add" method="post">
+	<h1>${board} Reply Page</h1>
+	<form class="add_form" action="./reply" method="post">
+	<input type="hidden" value="${dto.num}" name="num">
 	<h3>글제목:</h3> <input type="text" name="title">
 	<h3>글내용:</h3> <textarea rows="" cols="" name="contents"></textarea>
 	<h3>작성자:</h3> <input type="text" name="writer">

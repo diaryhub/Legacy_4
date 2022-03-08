@@ -23,4 +23,7 @@ public interface BoardDAO {
 	
 	//total
 	public Long total(Pager pager) throws Exception;
+
+	int reply(BoardDTO boardDTO) throws Exception;
+
 }

@@ -44,5 +44,16 @@ public class QnaService implements BoardService {
 		// TODO Auto-generated method stub
 		return qnaDAO.delete(boardDTO);
 	}
+	
+	public int reply(QnaDTO qnaDTO) throws Exception{
+		BoardDTO boardDTO = qnaDAO.detail(qnaDTO);
+		QnaDTO parent = (QnaDTO)boardDTO;
+		qnaDTO.setRef(parent.getRef());
+		qnaDTO.setStep(parent.getStep()+1);
+		qnaDTO.setDepth(parent.getDepth()+1);
+		int result = qnaDAO.stepUpdate(parent);
+		result = qnaDAO.reply(qnaDTO);
+		return result;
+	}
 
 }
