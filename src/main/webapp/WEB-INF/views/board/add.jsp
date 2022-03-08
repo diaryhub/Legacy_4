@@ -18,5 +18,6 @@
 	<h3>작성자:</h3> <input type="text" name="writer">
 	<button>ADD</button>
 	</form>
+	<script src="../resources/js/add.js"></script>
 </body>
 </html>

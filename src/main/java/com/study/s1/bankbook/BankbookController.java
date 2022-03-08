@@ -47,8 +47,14 @@ public class BankbookController {
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public String detail(BankbookDTO bankbookDTO, Model model) throws Exception {
 		bankbookDTO = bankbookService.detail(bankbookDTO);
+		String path = "bankbook/detail";
 		model.addAttribute("dto", bankbookDTO);
-		return "bankbook/detail";
+		if(bankbookDTO==null) {
+			path="common/result";
+			model.addAttribute("path", "./list");
+			model.addAttribute("message", "없는 번호입니다.");
+		}
+		return path;
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)

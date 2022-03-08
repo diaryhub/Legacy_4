@@ -45,6 +45,8 @@ public class MemberController {
 	public String Join() throws Exception {
 		return "member/join";
 	}
+	@RequestMapping(value = "joinCheck", method = RequestMethod.GET)
+	public void joinCheck() throws Exception{}
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public void login(@CookieValue(value = "remember", defaultValue = "")String rememberId, Model model) {
@@ -53,13 +55,25 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String login(HttpSession session , MemberDTO memberDTO) throws Exception {
+	public String login(HttpSession session , MemberDTO memberDTO, Model model) throws Exception {
 		memberDTO = service.login(memberDTO);
-		if(memberDTO!=null) {
+//		String path = "redirect:./login";
+//		if(memberDTO!=null) {
+//			session.setAttribute("member", memberDTO);
+//			path = "redirect:../";
+//		}
+		
+		String message = "Login Fail";
+		String p = "./login";
+		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			return "redirect:../";
+			message ="Login Success";
+			p="../";
 		}
-		return "redirect:./login";
+		model.addAttribute("path", p);
+		model.addAttribute("message", message);
+		String path = "common/result";	
+		return path;
 	}
 	
 	@RequestMapping(value = "update", method = RequestMethod.POST)
