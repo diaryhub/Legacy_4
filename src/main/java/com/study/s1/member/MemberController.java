@@ -36,9 +36,7 @@ public class MemberController {
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String Join(MemberDTO memberDTO) throws Exception {
 		int result = service.join(memberDTO);
-		if (result != 0)
 			return "redirect:../";
-		return "member/join";
 	}
 
 	@RequestMapping(value = "join", method = RequestMethod.GET)
