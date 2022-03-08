@@ -12,6 +12,9 @@
 </head>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
+	<div>
+	<img alt="" src="./resources/images/sunflowers.jpg">
+	</div>
 	<h1>hello</h1><span class="material-icons-outlined">account_circle</span>
 	<h1>${member.name}</h1>
 	<div>

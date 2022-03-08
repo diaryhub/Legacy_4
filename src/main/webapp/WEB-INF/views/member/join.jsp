@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Join Page</h1>
-	<form action="" class="frm" method="post" id="frm">
+	<form action="" class="frm" method="post" id="frm" enctype="multipart/form-data">
 		<fieldset>
 			<legend>id</legend>
 			<input type="text" name="id" id="id">
@@ -32,6 +32,10 @@
 		<fieldset>
 			<legend>email</legend>
 			<input type="text" name="email" id="email">
+		</fieldset>
+		<fieldset>
+			<legend>Photo</legend>
+			<input type="file" name="photo" id="photo">
 		</fieldset>
 		<fieldset>
 			<legend>phone</legend>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +10,11 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-<h1>My Page</h1>
-<h1>ID:${dto.id}</h1>
-<h1>NAME:${dto.name}</h1>
-<h1>EMAIL:${dto.email}</h1>
-<h1>PHONE:${dto.phone}</h1>
-<a href="./update?id=${dto.id}">수정</a>
+	<h1>My Page</h1>
+	<h1>ID:${dto.id}</h1>
+	<h1>NAME:${dto.name}</h1>
+	<h1>EMAIL:${dto.email}</h1>
+	<h1>PHONE:${dto.phone}</h1>
+	<a href="./update?id=${dto.id}">수정</a>
 </body>
 </html>
