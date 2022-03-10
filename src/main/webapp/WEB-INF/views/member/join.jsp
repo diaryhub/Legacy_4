@@ -41,8 +41,9 @@
 			<legend>phone</legend>
 			<input type="text" name="phone" id="phone">
 		</fieldset>
-		<button id="btn" type="button">회원가입</button>
+<!--  		<button id="btn" type="button">회원가입</button> -->
+		<button id="btn" type="submit">회원가입</button>
 	</form>
-	<script src="../resources/js/join2.js"></script>
+<!--  	<script src="../resources/js/join2.js"></script> -->
 </body>
 </html>

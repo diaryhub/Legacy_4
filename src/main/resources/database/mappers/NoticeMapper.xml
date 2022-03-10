@@ -3,45 +3,89 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
-    <mapper namespace="com.study.s1.board.notice.NoticeDAO">
 
-    <select id="list" resultType="NoticeDTO">
-     SELECT * FROM
-	(SELECT ROWNUM R, N.* FROM
-	(SELECT * FROM NOTICE WHERE NUM>0 AND 
-	<choose>
-	<when test="kind=='col1'">TITLE</when> 
-	<when test="kind=='col2'">CONTENTS</when> 
-	<when test="kind=='col3'">WRITER</when> 
-	<otherwise>TITLE</otherwise>
-	</choose>
-	LIKE '%'||#{search}||'%' ORDER BY NUM DESC) N)
-	 WHERE R BETWEEN #{startRow} AND #{lastRow}
-    </select>
+<mapper namespace="com.study.s1.board.notice.NoticeDAO">
+
+	<select id="list" resultType="NoticeDTO">
+		SELECT * FROM
+		(SELECT ROWNUM R, N.* FROM
+		(SELECT * FROM NOTICE WHERE NUM>0 AND
+		<choose>
+			<when test="kind=='col1'">TITLE</when>
+			<when test="kind=='col2'">CONTENTS</when>
+			<when test="kind=='col3'">WRITER</when>
+			<otherwise>TITLE</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%' ORDER BY NUM DESC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+
+	<select id="total" resultType="Long" parameterType="Pager">
+		SELECT COUNT(NUM) FROM NOTICE
+		WHERE NUM>0 AND
+		<choose>
+			<when test="kind=='col1'">TITLE</when>
+			<when test="kind=='col2'">CONTENTS</when>
+			<when test="kind=='col3'">WRITER</when>
+			<otherwise>TITLE</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+	</select>
+
+	<select id="detail" parameterType="NoticeDTO" resultMap="noticeResult">
+		SELECT NUM, N.TITLE, N.CONTENTS, N.WRITER, N.REGDATE,
+		N.HIT,NF.FILENUM,NF.FILENAME,NF.ORINAME
+		FROM NOTICE N
+		LEFT JOIN
+		NOTICEFILE NF
+		USING(NUM)
+		WHERE NUM = #{num}
+	</select>
+	
+	<resultMap type="NoticeDTO" id="noticeResult">
+		<id column="num" property="num" /><!-- PK -->
+		<result column="title" property="title" />
+		<result column="contents" property="contents" />
+		<result column="writer" property="writer" />
+		<result column="regDate" property="regDate" />
+		<result column="hit" property="hit" />
+		<association property="noticeFileDTO" javaType="NoticeFileDTO">
+			<id column="fileNum" property="fileNum" />
+			<result column="fileName" property="fileName" />
+			<result column="oriName" property="oriName" />
+		</association>
+	</resultMap>
+	
+	<insert id="add" parameterType="NoticeDTO">
+		INSERT INTO NOTICE
+		VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0)
+	</insert>
+	<insert id="addFile" parameterType="NoticeFileDTO">
+		INSERT INTO NOTICEFILE VALUES
+		(FILE_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
+	</insert>
+	<update id="update" parameterType="NoticeDTO">
+		UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+	</update>
+	<delete id="delete" parameterType="NoticeDTO">
+		DELETE NOTICE WHERE NUM=#{num}
+	</delete>
+
+
+</mapper>
     
-    <select id="total" resultType="Long" parameterType="Pager">
-    	SELECT COUNT(NUM) FROM NOTICE
-    	WHERE NUM>0 AND 
-	<choose>
-	<when test="kind=='col1'">TITLE</when> 
-	<when test="kind=='col2'">CONTENTS</when> 
-	<when test="kind=='col3'">WRITER</when> 
-	<otherwise>TITLE</otherwise>
-	</choose>
-	LIKE '%'||#{search}||'%'
-    </select>
     
-    <select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
-    SELECT * FROM NOTICE WHERE NUM = #{num}
-    </select>
-    <insert id="add" parameterType="NoticeDTO">
-    INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0)
-    </insert>
-    <update id="update" parameterType="NoticeDTO">
-    UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
-    </update>
-    <delete id="delete" parameterType="NoticeDTO">
-    DELETE NOTICE WHERE NUM=#{num}
-    </delete>
-    </mapper>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

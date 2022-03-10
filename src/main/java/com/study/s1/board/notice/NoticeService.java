@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.study.s1.board.BoardDTO;
 import com.study.s1.board.BoardService;
+import com.study.s1.util.FileManager;
 import com.study.s1.util.Pager;
 
 @Service
@@ -14,7 +16,8 @@ public class NoticeService implements BoardService {
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
-
+	@Autowired
+	private FileManager fileManager;
 	
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {
@@ -28,11 +31,15 @@ public class NoticeService implements BoardService {
 		// TODO Auto-generated method stub
 		return noticeDAO.detail(boardDTO);
 	}
-
-	@Override
-	public int add(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.add(boardDTO);
+	public int add(BoardDTO boardDTO,MultipartFile photo) throws Exception {
+		int result = noticeDAO.add(boardDTO);
+		String fileName = fileManager.save(photo, "resources/upload/notice/");
+		NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
+		noticeFileDTO.setNum(boardDTO.getNum());
+		noticeFileDTO.setFileName(fileName);
+		noticeFileDTO.setOriName(photo.getOriginalFilename());
+		result = noticeDAO.addFile(noticeFileDTO);
+		return result; 
 	}
 
 	@Override
@@ -46,6 +53,16 @@ public class NoticeService implements BoardService {
 		// TODO Auto-generated method stub
 		return noticeDAO.delete(boardDTO);
 	}
+
+	@Override
+	public int add(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return noticeDAO.add(boardDTO);
+	}
+
+	
+
+
 
 	
 }

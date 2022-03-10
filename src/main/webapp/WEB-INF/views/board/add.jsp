@@ -12,9 +12,10 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<h1>${board}Add Page</h1>
-	<form class="add_form" action="./add" method="post">
+	<form class="add_form" action="./add" method="post" enctype="multipart/form-data">
 	<h3>글제목:</h3> <input type="text" name="title">
 	<h3>글내용:</h3> <textarea rows="" cols="" name="contents"></textarea>
+	<h3>Photo</h3> <input type="file" name="photo" id="photo">
 	<h3>작성자:</h3> <input type="text" name="writer">
 	<button>ADD</button>
 	</form>

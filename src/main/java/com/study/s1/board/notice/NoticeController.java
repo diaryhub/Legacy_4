@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.study.s1.board.BoardDTO;
@@ -48,8 +49,10 @@ public class NoticeController {
 		return "board/detail";
 	}
 	@RequestMapping(value = "add", method=RequestMethod.POST)
-	public String add(NoticeDTO noticeDTO) throws Exception {
-		int result = noticeService.add(noticeDTO);
+	public String add(NoticeDTO noticeDTO,MultipartFile photo) throws Exception {
+		int result = noticeService.add(noticeDTO,photo);
+		System.out.println(photo.getOriginalFilename());
+		System.out.println(photo.getSize());
 		if(result>0) {
 			System.out.println("insert sucsess");
 			return "redirect:./list";

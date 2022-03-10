@@ -13,7 +13,6 @@
 <body>
 	<c:import url="./template/header.jsp"></c:import>
 	<div>
-	<img alt="" src="./resources/images/sunflowers.jpg">
 	</div>
 	<h1>hello</h1><span class="material-icons-outlined">account_circle</span>
 	<h1>${member.name}</h1>
@@ -22,11 +21,10 @@
 		<a href="./member/mypage">My Page</a>
 		<a href="./member/logout">Log out</a>
 		</c:if>
-		<c:if test="${empty member}">
 		<a href="./member/login">Login</a>
 		<a href="./member/join">Join</a>
-		</c:if>
 
 	</div>
+		
 </body>
 </html>

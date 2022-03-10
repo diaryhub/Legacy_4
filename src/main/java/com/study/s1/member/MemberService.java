@@ -15,8 +15,14 @@ public class MemberService {
 	private FileManager fileManager;
 	
 	public int join(MemberDTO memberDTO,MultipartFile photo) throws Exception {
-		fileManager.save(photo, "resources/upload/member/");
-		return memberDAO.join(memberDTO);
+		int result = memberDAO.join(memberDTO);
+		String fileName = fileManager.save(photo, "resources/upload/member/");
+		MemberFileDTO memberFileDTO = new MemberFileDTO();
+		memberFileDTO.setId(memberDTO.getId());
+		memberFileDTO.setFileName(fileName);
+		memberFileDTO.setOriName(photo.getOriginalFilename());
+		result = memberDAO.addFile(memberFileDTO);
+		return result; // memberDAO.join(memberDTO);
 	}
 	
 	
