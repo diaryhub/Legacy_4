@@ -49,10 +49,10 @@ public class NoticeController {
 		return "board/detail";
 	}
 	@RequestMapping(value = "add", method=RequestMethod.POST)
-	public String add(NoticeDTO noticeDTO,MultipartFile photo) throws Exception {
-		int result = noticeService.add(noticeDTO,photo);
-		System.out.println(photo.getOriginalFilename());
-		System.out.println(photo.getSize());
+	public String add(BoardDTO boardDTO,MultipartFile [] files) throws Exception {
+		
+		int result = noticeService.add(boardDTO,files);
+		
 		if(result>0) {
 			System.out.println("insert sucsess");
 			return "redirect:./list";

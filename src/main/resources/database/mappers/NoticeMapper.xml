@@ -32,7 +32,7 @@
 		LIKE '%'||#{search}||'%'
 	</select>
 
-	<select id="detail" parameterType="NoticeDTO" resultMap="noticeResult">
+	<select id="detail" parameterType="NoticeDTO" resultMap="detailResult">
 		SELECT NUM, N.TITLE, N.CONTENTS, N.WRITER, N.REGDATE,
 		N.HIT,NF.FILENUM,NF.FILENAME,NF.ORINAME
 		FROM NOTICE N
@@ -42,25 +42,29 @@
 		WHERE NUM = #{num}
 	</select>
 	
-	<resultMap type="NoticeDTO" id="noticeResult">
+	<resultMap type="NoticeDTO" id="detailResult">
 		<id column="num" property="num" /><!-- PK -->
 		<result column="title" property="title" />
 		<result column="contents" property="contents" />
 		<result column="writer" property="writer" />
 		<result column="regDate" property="regDate" />
 		<result column="hit" property="hit" />
-		<association property="noticeFileDTO" javaType="NoticeFileDTO">
+		<collection property="fileDTOs" javaType="List" ofType="NoticeFileDTO">
 			<id column="fileNum" property="fileNum" />
 			<result column="fileName" property="fileName" />
 			<result column="oriName" property="oriName" />
-		</association>
+		</collection>
 	</resultMap>
-	
+	 
+	  
 	<insert id="add" parameterType="NoticeDTO">
+		<selectKey keyProperty="num" order="BEFORE" resultType="Long"> 
+			SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO NOTICE
-		VALUES(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0)
+		VALUES(#{num},#{title},#{contents},#{writer},SYSDATE,0)
 	</insert>
-	<insert id="addFile" parameterType="NoticeFileDTO">
+	<insert id="addFile" parameterType="BoardFileDTO">
 		INSERT INTO NOTICEFILE VALUES
 		(FILE_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
 	</insert>

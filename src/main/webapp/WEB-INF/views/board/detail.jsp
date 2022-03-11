@@ -25,8 +25,10 @@
 	</table>
 	<div>
 	<textarea rows="20" cols="80" readonly> ${dto.contents}</textarea>
-	<img alt="" src="../resources/upload/notice/${dto.noticeFileDTO.fileName}">
-	<h3>${dto.noticeFileDTO.oriName}</h3>
+	<c:forEach items="${dto.fileDTOs}" var="f">
+	<a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+	</c:forEach>
+	
 	</div>
 	<a href="./update?num=${dto.num}">수정</a>
 	<a href="./delete?num=${dto.num}">삭제</a>

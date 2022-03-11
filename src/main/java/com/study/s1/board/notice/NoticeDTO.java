@@ -1,16 +1,18 @@
 package com.study.s1.board.notice;
 
+import java.util.List;
+
 import com.study.s1.board.BoardDTO;
 
 public class NoticeDTO extends BoardDTO{
 	
-	private NoticeFileDTO noticeFileDTO;
+private List<NoticeFileDTO> fileDTOs;
 
-	public NoticeFileDTO getNoticeFileDTO() {
-		return noticeFileDTO;
-	}
+public List<NoticeFileDTO> getFileDTOs() {
+	return fileDTOs;
+}
 
-	public void setNoticeFileDTO(NoticeFileDTO noticeFileDTO) {
-		this.noticeFileDTO = noticeFileDTO;
-	}
+public void setFileDTOs(List<NoticeFileDTO> fileDTOs) {
+	this.fileDTOs = fileDTOs;
+} 
 }

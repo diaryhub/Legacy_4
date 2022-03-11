@@ -1,5 +1,7 @@
 package com.study.s1.board.qna;
 
+import java.util.List;
+
 import com.study.s1.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO{
@@ -7,7 +9,15 @@ public class QnaDTO extends BoardDTO{
 	private Long ref;
 	private Long step;
 	private Long depth;
+	private List<QnaFileDTO> FileDTOs;
 	
+	
+	public List<QnaFileDTO> getFileDTOs() {
+		return FileDTOs;
+	}
+	public void setFileDTOs(List<QnaFileDTO> fileDTOs) {
+		FileDTOs = fileDTOs;
+	}
 	public Long getRef() {
 		return ref;
 	}

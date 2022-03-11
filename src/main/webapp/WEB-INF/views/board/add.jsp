@@ -15,7 +15,11 @@
 	<form class="add_form" action="./add" method="post" enctype="multipart/form-data">
 	<h3>글제목:</h3> <input type="text" name="title">
 	<h3>글내용:</h3> <textarea rows="" cols="" name="contents"></textarea>
-	<h3>Photo</h3> <input type="file" name="photo" id="photo">
+	<div>
+	<input type="file" name="files">
+	<input type="file" name="files">
+	<input type="file" name="files">
+	</div> 
 	<h3>작성자:</h3> <input type="text" name="writer">
 	<button>ADD</button>
 	</form>

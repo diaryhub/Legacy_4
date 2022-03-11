@@ -33,11 +33,36 @@
 	LIKE '%'||#{search}||'%'
     </select>
     
-    <select id="detail" parameterType="QnaDTO" resultType="QnaDTO">
-    SELECT * FROM QNA WHERE NUM = #{num}
+    <select id="detail" parameterType="QnaDTO" resultMap="detailResult">
+    SELECT NUM, Q.TITLE, Q.CONTENTS, Q.WRITER, Q.REGDATE,
+    Q.HIT, QF.FILENUM, QF.FILENAME, QF.ORINAME 
+    FROM QNA Q 
+    LEFT JOIN
+    QNAFILE QF
+    USING (NUM)
+    WHERE NUM = #{num}
     </select>
+    <resultMap type="QnaDTO" id="detailResult">
+    <id column="num" property="num" /><!-- PK -->
+		<result column="title" property="title" />
+		<result column="contents" property="contents" />
+		<result column="writer" property="writer" />
+		<result column="regDate" property="regDate" />
+		<result column="hit" property="hit" />
+		<collection property="fileDTOs" javaType="List" ofType="QnaFileDTO">
+			<id column="fileNum" property="fileNum" />
+			<result column="fileName" property="fileName" />
+			<result column="oriName" property="oriName" />
+		</collection>
+    </resultMap>
     <insert id="add" parameterType="QnaDTO">
-    INSERT INTO QNA VALUES(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},SYSDATE,0,QNA_SEQ.CURRVAL,0,0)
+    <selectKey keyProperty="num" order="BEFORE" resultType="Long">
+    	SELECT QNA_SEQ.NEXTVAL FROM DUAL
+    </selectKey>
+    INSERT INTO QNA VALUES(#{num},#{title},#{contents},#{writer},SYSDATE,0,#{num},0,0)
+    </insert>
+    <insert id="addFile" parameterType="BoardFileDTO">
+    INSERT INTO QNAFILE VALUES(FILE_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
     </insert>
     <update id="update" parameterType="QnaDTO">
     UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}

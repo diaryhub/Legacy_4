@@ -31,14 +31,21 @@ public class NoticeService implements BoardService {
 		// TODO Auto-generated method stub
 		return noticeDAO.detail(boardDTO);
 	}
-	public int add(BoardDTO boardDTO,MultipartFile photo) throws Exception {
+	public int add(BoardDTO boardDTO,MultipartFile [] files) throws Exception {
+		// long num = noticeDAO.seqNum();
+		// boardDTO.setNum(num);
 		int result = noticeDAO.add(boardDTO);
-		String fileName = fileManager.save(photo, "resources/upload/notice/");
-		NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
-		noticeFileDTO.setNum(boardDTO.getNum());
-		noticeFileDTO.setFileName(fileName);
-		noticeFileDTO.setOriName(photo.getOriginalFilename());
-		result = noticeDAO.addFile(noticeFileDTO);
+		for(int i=0;i<files.length;i++) {
+			if(files[i].isEmpty()) {
+				continue;
+			}
+			String fileName = fileManager.save(files[i], "resources/upload/notice/");
+			NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
+			noticeFileDTO.setNum(boardDTO.getNum());
+			noticeFileDTO.setFileName(fileName);
+			noticeFileDTO.setOriName(files[i].getOriginalFilename());
+			result = noticeDAO.addFile(noticeFileDTO);
+		}
 		return result; 
 	}
 
@@ -54,11 +61,7 @@ public class NoticeService implements BoardService {
 		return noticeDAO.delete(boardDTO);
 	}
 
-	@Override
-	public int add(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.add(boardDTO);
-	}
+
 
 	
 
