@@ -16,7 +16,7 @@
 	<h1>EMAIL:${dto.email}</h1>
 	<h1>PHONE:${dto.phone}</h1>
 	<img alt="" src="../resources/upload/member/${dto.memberFileDTO.fileName}">
-	<h3>${dto.memberFileDTO.oriName}</h3>
+	<a href="./photoDown?fileNum=${dto.memberFileDTO.fileNum}">${dto.memberFileDTO.oriName}</a>
 	
 	<a href="./update?id=${dto.id}">수정</a>
 </body>

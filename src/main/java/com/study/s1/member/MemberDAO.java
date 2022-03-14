@@ -28,5 +28,9 @@ public class MemberDAO {
 	public int addFile(MemberFileDTO memberFileDTO) throws Exception{
 		return sqlSession.insert(namespace+"addFile", memberFileDTO);
 	}
+	public MemberFileDTO detailFile(MemberFileDTO memberFileDTO)throws Exception{
+		return sqlSession.selectOne(namespace+"detailFile",memberFileDTO);
+	}
+	
 	
 }

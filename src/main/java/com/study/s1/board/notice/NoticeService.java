@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.study.s1.board.BoardDTO;
 import com.study.s1.board.BoardService;
+import com.study.s1.member.MemberFileDTO;
 import com.study.s1.util.FileManager;
 import com.study.s1.util.Pager;
 
@@ -24,6 +25,10 @@ public class NoticeService implements BoardService {
 		pager.makeRow();
 		pager.makenNum(noticeDAO.total(pager));
 		return noticeDAO.list(pager);
+	}
+	
+	public NoticeFileDTO detailFile(NoticeFileDTO noticeFileDTO) throws Exception{
+		return noticeDAO.detailFile(noticeFileDTO);
 	}
 
 	@Override

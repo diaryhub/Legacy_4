@@ -26,6 +26,15 @@ public class NoticeController {
 		return "notice";
 	}
 	
+	@RequestMapping(value = "download", method = RequestMethod.GET)
+	public ModelAndView fileDown(NoticeFileDTO noticeFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("fileDown");
+		noticeFileDTO = noticeService.detailFile(noticeFileDTO);
+		mv.addObject("file",noticeFileDTO);
+		return mv;
+	}
+	
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public ModelAndView delete (NoticeDTO noticeDTO)throws Exception{
 		int result = noticeService.delete(noticeDTO);

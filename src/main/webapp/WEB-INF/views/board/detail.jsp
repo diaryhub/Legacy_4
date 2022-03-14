@@ -26,7 +26,7 @@
 	<div>
 	<textarea rows="20" cols="80" readonly> ${dto.contents}</textarea>
 	<c:forEach items="${dto.fileDTOs}" var="f">
-	<a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+	<a href="./download?fileNum=${f.fileNum}">${f.oriName}</a>
 	</c:forEach>
 	
 	</div>

@@ -14,6 +14,10 @@ public class MemberService {
 	@Autowired
 	private FileManager fileManager;
 	
+	public MemberFileDTO detailFile(MemberFileDTO memberFileDTO)throws Exception {
+		return memberDAO.detailFile(memberFileDTO);
+	}
+	
 	public int join(MemberDTO memberDTO,MultipartFile photo) throws Exception {
 		int result = memberDAO.join(memberDTO);
 		String fileName = fileManager.save(photo, "resources/upload/member/");

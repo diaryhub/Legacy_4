@@ -6,6 +6,12 @@
 
 <mapper namespace="com.study.s1.board.notice.NoticeDAO">
 
+	<select id="detailFile" parameterType="NoticeFileDTO" resultType="NoticeFileDTO">
+		SELECT *
+		FROM NOTICEFILE
+		WHERE FILENUM=#{fileNum}
+	</select>
+
 	<select id="list" resultType="NoticeDTO">
 		SELECT * FROM
 		(SELECT ROWNUM R, N.* FROM

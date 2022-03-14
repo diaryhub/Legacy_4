@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.study.s1.board.BoardDTO;
-
+import com.study.s1.board.notice.NoticeFileDTO;
 import com.study.s1.util.Pager;
 
 @Controller
@@ -25,6 +25,15 @@ public class QnaController {
 	@ModelAttribute("board")
 	public String board() {
 		return "qna";
+	}
+	
+	@RequestMapping(value = "download", method = RequestMethod.GET)
+	public ModelAndView fileDown(QnaFileDTO qnaFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("fileDown");
+		qnaFileDTO = qnaService.detailFile(qnaFileDTO);
+		mv.addObject("file",qnaFileDTO);
+		return mv;
 	}
 	
 	@RequestMapping(value = "reply", method = RequestMethod.GET)
