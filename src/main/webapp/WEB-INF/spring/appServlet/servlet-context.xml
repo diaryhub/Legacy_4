@@ -26,6 +26,38 @@
 		<beans:property name="order" value="0" />
 	</beans:bean>
 	
+	<interceptors>
+	
+		<interceptor>
+<!-- 
+			<mapping path="/qna/detail"/>
+			<mapping path="/qna/update"/>
+			<mapping path="/qna/delete"/>
+			<mapping path="/qna/add"/> -->
+			<mapping path="/qna/*"/>
+			<exclude-mapping path="/qna/list"/>
+			<beans:bean class="com.study.s1.interceptor.LoginInterceptor"></beans:bean>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/delete"/>
+			<mapping path="/qna/update"/>
+			<beans:bean class="com.study.s1.interceptor.WriterInterceptor"></beans:bean>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/notice/delete"/>
+			<mapping path="/notice/add"/>
+			<mapping path="/notice/update"/>
+			 <beans:bean class="com.study.s1.interceptor.LoginInterceptor"></beans:bean>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/bankbook/**"/>
+			<beans:bean class="com.study.s1.interceptor.TestInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
 	<context:component-scan base-package="com.study.s1" />
 	
 	

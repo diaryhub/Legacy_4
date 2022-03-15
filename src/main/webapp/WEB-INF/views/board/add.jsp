@@ -20,7 +20,9 @@
 	<input type="file" name="files">
 	<input type="file" name="files">
 	</div> 
-	<h3>작성자:</h3> <input type="text" name="writer">
+	<h3>작성자:</h3> 
+	 <input type="text" name="writer" value="${member.id}" readonly="readonly">
+
 	<button>ADD</button>
 	</form>
 	<script src="../resources/js/add.js"></script>
