@@ -34,6 +34,10 @@ public class NoticeDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"list", pager);
 	}
+	
+	public List<NoticeFileDTO> listFile(BoardDTO boardDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"listFile",boardDTO);
+	}
 
 	@Override
 	public int add(BoardDTO boardDTO) throws Exception {

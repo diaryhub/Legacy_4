@@ -1,5 +1,6 @@
 package com.study.s1.board.notice;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.study.s1.board.BoardDTO;
 import com.study.s1.board.BoardService;
-import com.study.s1.member.MemberFileDTO;
 import com.study.s1.util.FileManager;
 import com.study.s1.util.Pager;
 
@@ -63,7 +63,19 @@ public class NoticeService implements BoardService {
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.delete(boardDTO);
+		List<NoticeFileDTO> ar = noticeDAO.listFile(boardDTO);
+		int result = noticeDAO.delete(boardDTO);
+		if (result>0) {
+//			for(int i=0;i<ar.size();i++){
+//				ar.get(i);
+//			}
+			//for(collection에서 꺼낼타빙명 변수명 : collection의 변수명){}
+			for(NoticeFileDTO dto:ar) {
+				
+				fileManager.remove("resources/upload/notice/", dto.getFileName());
+			}
+		}
+		return result;
 	}
 
 
