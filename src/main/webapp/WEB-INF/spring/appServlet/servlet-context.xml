@@ -25,9 +25,17 @@
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0" />
 	</beans:bean>
-	
+	<beans:bean class="com.study.s1.interceptor.LoginInterceptor" id="loginInterceptor"></beans:bean>
+	<beans:bean class="com.study.s1.interceptor.WriterInterceptor" id="writerInterceptor"></beans:bean>
+		
 	<interceptors>
-	
+		
+		<interceptor>
+			<mapping path="/qna/update"/>
+			<mapping path="/notice/update"/>
+			<beans:bean class="com.study.s1.interceptor.WriterCheckInterceptor"></beans:bean>
+		</interceptor>
+		
 		<interceptor>
 <!-- 
 			<mapping path="/qna/detail"/>
@@ -36,13 +44,12 @@
 			<mapping path="/qna/add"/> -->
 			<mapping path="/qna/*"/>
 			<exclude-mapping path="/qna/list"/>
-			<beans:bean class="com.study.s1.interceptor.LoginInterceptor"></beans:bean>
+			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		
 		<interceptor>
 			<mapping path="/qna/delete"/>
-			<mapping path="/qna/update"/>
-			<beans:bean class="com.study.s1.interceptor.WriterInterceptor"></beans:bean>
+			<beans:ref bean="writerInterceptor"/>
 		</interceptor>
 		
 		<interceptor>

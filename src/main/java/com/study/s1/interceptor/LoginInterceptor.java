@@ -8,7 +8,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.study.s1.member.MemberDTO;
 
-@Component
+
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override

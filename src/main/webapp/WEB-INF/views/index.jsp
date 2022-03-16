@@ -23,7 +23,6 @@
 		</c:if>
 		<a href="./member/login">Login</a>
 		<a href="./member/join">Join</a>
-
 	</div>
 		
 </body>
